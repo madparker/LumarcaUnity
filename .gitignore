@@ -30,3 +30,9 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+LumarcaUnity2/LumarcaUnityMac3\.app/
+
+LumarcaUnity2/LumarcaUnityMac2\.app/
+
+LumarcaUnity2/LumarcaUnityMac\.app/
