@@ -11,7 +11,7 @@ public class WhaleWaves : LumarcaLineRenderer {
 	
 	// Update is called once per frame
 	void Update () {
-		counter += Time.deltaTime;
+		counter += Time.deltaTime/2f;
 	}
 
 	public override Vector3[] GenerateLine(int lineNum, Vector3 linePos, 
@@ -22,18 +22,17 @@ public class WhaleWaves : LumarcaLineRenderer {
 		
 		Vector3 vec1 = UtilScript.CloneVec3(linePos);
 		Vector3 vec2 = UtilScript.CloneVec3(linePos);
-		
-		vec1.y +=  300+5 + Mathf.Sin(counter + linePos.x/300f + linePos.z/300f) * 50;
-		vec2.y +=  300-5 + Mathf.Sin(counter + linePos.x/300f + linePos.z/300f) * 50;
+
+		vec1.y +=  0.25f + Mathf.PerlinNoise(counter + linePos.x * 2, counter + linePos.z * 2) * 0.1f;
+		vec2.y += vec1.y - 0.025f;
 		
 		result.Add(vec1);
 		result.Add(vec2);
 		
-		float col = UtilScript.Map(vec1.y, linePos.y - 100, linePos.y + 100, 0, 1);
+		float col = UtilScript.Map(vec1.y, linePos.y - 1, linePos.y + 1, 0, 1);
 		
 		//		Debug.Log(col);
-		
-		mat.color = new Color(0.3f, 0.75f, 1, 1); 
+		mat.color = new Color(0.15f, 0.35f, 0.5f, 1); 
 		
 		return result.ToArray();
 	}

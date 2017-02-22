@@ -3,7 +3,7 @@
 Shader "Custom/DepthColor" {
 Properties {
     _DepthMin ("Depth Min", Float) = -0.119303
-    _DepthMax ("Depth Min", Float) = 0.762
+    _DepthMax ("Depth Max", Float) = 0.762
 }
 
 

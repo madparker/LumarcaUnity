@@ -56,7 +56,7 @@ SubShader {
 	         {
 	         	float diff = (input.position_in_world_space.y + _TotalHeight/2)/_TotalHeight;
 	         
-				return float4(diff, 0, 1-diff, 1); 
+				return float4(1-diff, 0, diff, 1); 
 	         }
          
 		ENDCG

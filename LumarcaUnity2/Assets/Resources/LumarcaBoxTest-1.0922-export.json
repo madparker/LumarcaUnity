@@ -7,7 +7,7 @@
   },
   "ThrowRatio": 1.5,
   "PhysicalWidth": 1.0922000408172607,
-  "CeilingMount": false,
+  "CeilingMount": true,
   "positions": [
     {
       "x": -0.4966144859790802,

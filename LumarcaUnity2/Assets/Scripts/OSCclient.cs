@@ -224,6 +224,8 @@ public class OSCclient : MonoBehaviour {
 
 	void OnPacketReceived(OSCServer server, OSCPacket packet)
 	{
+		OSCAnimationSwitcher.instance.GotOSC();
+
 //		Debug.Log("OnPacketReceived1: " + packet.Address);
 
 		string label = packet.Address;

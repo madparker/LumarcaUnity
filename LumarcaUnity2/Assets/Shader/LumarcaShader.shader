@@ -61,7 +61,7 @@ SubShader {
 			
 			float PartsToFloat(float i1, float i2){
 				float f = i1 * 10000;
-				f += i2 * 100f;
+				f += i2 * 100;
 
 				return f;
 			} 

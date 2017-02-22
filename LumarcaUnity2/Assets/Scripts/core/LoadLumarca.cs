@@ -53,7 +53,7 @@ public class LoadLumarca : MonoBehaviour {
 
 	CameraFrustrumScript cfs;
 
-	public bool record = true;
+	public bool recordName = false;
 
 	public string recordFile;
 
@@ -122,7 +122,7 @@ public class LoadLumarca : MonoBehaviour {
 
 		GetComponent<LumarcaAnimation>();
 
-		if(record){
+		if(recordName){
 			recordAnimation = gameObject.AddComponent<LumarcaAnimation>();
 		}
 	}
@@ -152,7 +152,7 @@ public class LoadLumarca : MonoBehaviour {
 				currentLine = 0;
 			}
 
-			if(Input.GetKey(KeyCode.Space)){
+			if(Input.GetKeyDown(KeyCode.Space)){
 				drawAll = !drawAll;
 			}
 		}
@@ -168,8 +168,9 @@ public class LoadLumarca : MonoBehaviour {
 	void OnDrawGizmos(){
 		if(calibration){
 			showCalibrationLines();
-		} else
+		} else {
 			drawScene();
+		}
 	}
 
 	void showCalibrationLines(){
@@ -205,7 +206,7 @@ public class LoadLumarca : MonoBehaviour {
 	
 	void drawScene(){
 
-		if(record){
+		if(recordName){
 			currentFrame = new LumarcaFrame();
 		}
 		
@@ -248,7 +249,8 @@ public class LoadLumarca : MonoBehaviour {
 
 //		GL.PopMatrix();
 
-		if(record){
+		if(recordName){
+			print(recordName);
 			recordAnimation.AddFrame(currentFrame);
 		}
 	}
@@ -415,7 +417,7 @@ public class LoadLumarca : MonoBehaviour {
 
 	void OnApplicationQuit()
 	{
-		if(record){
+		if(recordName){
 			recordAnimation.SaveToJSON(recordFile);
 		}
 	}
@@ -451,7 +453,8 @@ public class LoadLumarca : MonoBehaviour {
 			bottom = temp;
 		}
 
-		if(record){
+		if(recordName){
+			Debug.Log(rMat.name);
 			currentFrame.AddLine(new LumarcaLine(top, bottom, rMat.name));
 		}
 
@@ -505,7 +508,7 @@ public class LoadLumarca : MonoBehaviour {
 			bottom = temp;
 		}
 
-		if(record){
+		if(recordName){
 			currentFrame.AddLine(new LumarcaLine(top, bottom, mat.name, false));
 		}
 

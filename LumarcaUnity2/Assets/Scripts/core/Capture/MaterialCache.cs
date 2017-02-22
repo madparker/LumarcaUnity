@@ -12,6 +12,8 @@ public class MaterialCache : MonoBehaviour {
 	public static Material GetMaterial(string matStr){
 
 		if(!matCache.ContainsKey(matStr)){
+			Debug.Log(PATH_TO_MATERIALS + matStr);
+
 			Material mat = Resources.Load(PATH_TO_MATERIALS + matStr, typeof(Material)) as Material;
 
 			matCache[matStr] = mat;

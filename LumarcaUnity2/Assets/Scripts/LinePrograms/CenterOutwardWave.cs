@@ -23,8 +23,8 @@ public class CenterOutwardWave : LumarcaLineRenderer {
 	                                       float topZ, float bottomZ){
 		Vector3[] result = new Vector3[2];
 		
-		Vector3 vec1 = UtilScript.CloneVec3(linePos);
-		Vector3 vec2 = UtilScript.CloneVec3(linePos);
+//		Vector3 vec1 = UtilScript.CloneVec3(linePos);
+//		Vector3 vec2 = UtilScript.CloneVec3(linePos);
 		
 		float midX = ((topX + bottomX)/2);
 		float midZ = ((topZ + bottomZ)/2);
@@ -38,10 +38,10 @@ public class CenterOutwardWave : LumarcaLineRenderer {
 		
 //		Debug.Log("hypotAdjusted: " + hypotAdjusted);
 
-		float waveHeight = Mathf.Sin(hypotAdjusted) * topY * .5f;
+		float waveHeight = Mathf.Sin(hypotAdjusted) * topY * .75f;
 
 		result[0] = new Vector3(xPos, waveHeight, zPos);
-		result[1] = new Vector3(xPos, bottomY * 2, zPos);
+		result[1] = new Vector3(xPos, topY, zPos);
 		
 		return result;
 	}

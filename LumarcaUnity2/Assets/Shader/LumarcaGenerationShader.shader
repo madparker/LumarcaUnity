@@ -67,7 +67,7 @@ SubShader {
 			float GetColorPart1(float f, float min, float max){
 				float val = Map(f, min, max, 0, 255); 
 
-				float d = (floor(val)/255f);
+				float d = (floor(val)/255);
 
 				return d;
 			}
@@ -75,7 +75,7 @@ SubShader {
 			float GetColorPart2(float f, float min, float max){
 				float part1 = GetColorPart1(f, min, max);
 
-				float val = Map(f, min, max, 0, 255)/255f; 
+				float val = Map(f, min, max, 0, 255)/255; 
 
 				val = val - part1;
 
