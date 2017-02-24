@@ -8,7 +8,7 @@ public class LumarcaAnimation : MonoBehaviour {
 
 	public string fileName;
 
-	public List<LumarcaFrame> frames = new List<LumarcaFrame>();
+	public List<LumarcaFrame> frames;
 
 	int currentFrame = 0;
 
@@ -36,13 +36,21 @@ public class LumarcaAnimation : MonoBehaviour {
 	}
 
 	public void LoadFromJSON(){
-		TextAsset asset = Resources.Load(fileName) as TextAsset;
+		frames = AnimationCache.GetFrames(fileName);
 
-		JArray jFrames = JArray.Parse(asset.text);
+		if(frames == null){
+			frames = new List<LumarcaFrame>();
 
-		foreach(JArray jFrame in jFrames){
-			LumarcaFrame lf = LumarcaFrame.LoadFromJSON(jFrame);
-			frames.Add(lf);
+			TextAsset asset = Resources.Load(fileName) as TextAsset;
+
+			JArray jFrames = JArray.Parse(asset.text);
+
+			foreach(JArray jFrame in jFrames){
+				LumarcaFrame lf = LumarcaFrame.LoadFromJSON(jFrame);
+				frames.Add(lf);
+			}
+
+			AnimationCache.SetFrames(fileName, frames);
 		}
 	}
 

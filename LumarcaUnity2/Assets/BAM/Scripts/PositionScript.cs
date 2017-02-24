@@ -102,16 +102,16 @@ public class PositionScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		head.transform.position = headPosition;
-		topTorso.transform.position = topTorsoPosition;
-		bottomTorso.transform.position = bottomTorsoPosition;
-		rightHand.transform.position = rightHandPosition;
-		leftHand.transform.position = leftHandPosition;
-		rightFoot.transform.position = rightFootPosition;
-		leftFoot.transform.position = leftFootPosition;
-		rightKnee.transform.position = rightKneePosition;
-		leftKnee.transform.position = leftKneePosition;
-		rightElbow.transform.position = rightElbowPosition;
-		leftElbow.transform.position = leftElbowPosition;
+		head.transform.localPosition = headPosition;
+		topTorso.transform.localPosition = topTorsoPosition;
+		bottomTorso.transform.localPosition = bottomTorsoPosition;
+		rightHand.transform.localPosition = rightHandPosition;
+		leftHand.transform.localPosition = leftHandPosition;
+		rightFoot.transform.localPosition = rightFootPosition;
+		leftFoot.transform.localPosition = leftFootPosition;
+		rightKnee.transform.localPosition = rightKneePosition;
+		leftKnee.transform.localPosition = leftKneePosition;
+		rightElbow.transform.localPosition = rightElbowPosition;
+		leftElbow.transform.localPosition = leftElbowPosition;
 	}
 }

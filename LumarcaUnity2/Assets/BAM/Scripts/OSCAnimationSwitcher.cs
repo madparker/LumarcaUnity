@@ -13,13 +13,15 @@ public class OSCAnimationSwitcher : MonoBehaviour {
 	public static OSCAnimationSwitcher instance;
 
 	private bool turnOffAnimation = false;
+	private bool recentOSC = true;
 
 	// Use this for initialization
 	void Start () {
 		if(instance == null){
 			DontDestroyOnLoad(gameObject);
 			instance = this;
-			AnimationManager.instance.HardSwitch();
+			timer = SwitchTime;
+//			AnimationManager.instance.HardSwitch();
 		} else {
 			Destroy(gameObject);
 		}
@@ -28,10 +30,14 @@ public class OSCAnimationSwitcher : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		timer -= Time.deltaTime;
+		if(timer >= 0){
+			timer -= Time.deltaTime;
+		}
 
-		if(timer <= 0){
+		if(timer < 0 && recentOSC){
+			recentOSC = false;
 			AnimationManager.instance.enabled = true;
+			AnimationManager.instance.HardSwitch();
 		}
 
 		if(turnOffAnimation){
@@ -49,5 +55,6 @@ public class OSCAnimationSwitcher : MonoBehaviour {
 
 		timer = SwitchTime;
 		turnOffAnimation = true;
+		recentOSC = true;
 	}
 }
