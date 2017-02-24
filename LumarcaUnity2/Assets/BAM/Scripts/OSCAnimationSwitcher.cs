@@ -15,6 +15,8 @@ public class OSCAnimationSwitcher : MonoBehaviour {
 	private bool turnOffAnimation = false;
 	private bool recentOSC = true;
 
+	public PositionScript avatar;
+
 	// Use this for initialization
 	void Start () {
 		if(instance == null){
@@ -53,8 +55,10 @@ public class OSCAnimationSwitcher : MonoBehaviour {
 	public void GotOSC(){
 		Debug.Log("GOT OSC");
 
-		timer = SwitchTime;
-		turnOffAnimation = true;
-		recentOSC = true;
+		if(!avatar.Invalid()){
+			timer = SwitchTime;
+			turnOffAnimation = true;
+			recentOSC = true;
+		}
 	}
 }

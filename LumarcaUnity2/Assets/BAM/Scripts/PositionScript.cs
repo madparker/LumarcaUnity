@@ -114,4 +114,21 @@ public class PositionScript : MonoBehaviour {
 		rightElbow.transform.localPosition = rightElbowPosition;
 		leftElbow.transform.localPosition = leftElbowPosition;
 	}
+
+	public bool Invalid(){
+
+		float distTorso = Vector3.Distance(topTorsoPosition, 	Vector3.zero);
+		float distHead 	= Vector3.Distance(headPosition, 		Vector3.zero);
+		float distRHand = Vector3.Distance(rightHandPosition, 	Vector3.zero);
+		float distLHand = Vector3.Distance(leftHandPosition, 	Vector3.zero);
+		float distRFoot = Vector3.Distance(rightFootPosition, 	Vector3.zero);
+		float distLFoot = Vector3.Distance(leftFootPosition, 	Vector3.zero);
+
+		Debug.Log("dist: " + distTorso);
+
+		return 
+			(distTorso == 0) ||
+			(distTorso  > 1) ||
+			(distHead + distRHand + distLHand + distRFoot + distLFoot == 0);
+	}
 }
